@@ -63,10 +63,6 @@ export default function FlexBoxLayouts() {
           }}
         />
       </Stack>
-      <Typography variant="h2" sx={{ mt: 2 }}>
-        Grid:
-      </Typography>
-      <Divider />
     </Box>
   );
 }

@@ -1,6 +1,7 @@
-import { createTheme, ThemeProvider } from '@mui/material';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import FlexBoxLayouts from './layouts';
+import { Button, createTheme, ThemeProvider, Box } from '@mui/material';
+import { Route, BrowserRouter as Router, Routes, Link } from 'react-router-dom';
+import FlexBoxLayouts from './layouts/flexbox';
+import GridLayout from './layouts/grids';
 
 function App() {
   const theme = createTheme({
@@ -18,8 +19,17 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
+        <Box>
+          <Button variant="text" component={Link} to="/flex">
+            Flex
+          </Button>
+          <Button variant="text" component={Link} to="/grid">
+            Grid
+          </Button>
+        </Box>
         <Routes>
-          <Route index element={<FlexBoxLayouts />} />
+          <Route path="flex" element={<FlexBoxLayouts />} />
+          <Route path="grid" element={<GridLayout />} />
         </Routes>
       </Router>
     </ThemeProvider>
