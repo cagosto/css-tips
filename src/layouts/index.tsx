@@ -1,4 +1,11 @@
-import { Box, Stack, Theme, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Divider,
+  Stack,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 import { faker } from '@faker-js/faker';
 import { times } from 'lodash';
 
@@ -7,19 +14,21 @@ export default function FlexBoxLayouts() {
   const mdBP = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
 
   return (
-    <Box>
+    <Box sx={{ p: 2 }}>
+      <Typography variant="h2">Flexbox:</Typography>
+      <Divider />
       <Stack
         direction="row"
         columnGap={2}
         rowGap={1}
         flexWrap="wrap"
-        sx={{ p: 2 }}
+        sx={{ my: 2 }}
       >
         {boxes.map((v) => (
           <Box key={v}>{faker.name.fullName()}</Box>
         ))}
       </Stack>
-      <Stack direction={!mdBP ? 'column' : 'row'} columnGap={2} sx={{ p: 3 }}>
+      <Stack direction={!mdBP ? 'column' : 'row'} columnGap={2}>
         <Box
           sx={{
             background: (theme) => theme.palette.primary.main,
@@ -33,8 +42,16 @@ export default function FlexBoxLayouts() {
         />
         <Box
           sx={{
-            background: (theme) => theme.palette.secondary.dark,
+            background: (theme) => theme.palette.secondary.light,
             p: 10,
+            flexGrow: {
+              xs: 0,
+              md: 1,
+            },
+            maxWidth: {
+              xs: 'none',
+              md: 250,
+            },
             flexBasis: {
               xs: 1,
               md: 150,
@@ -46,6 +63,10 @@ export default function FlexBoxLayouts() {
           }}
         />
       </Stack>
+      <Typography variant="h2" sx={{ mt: 2 }}>
+        Grid:
+      </Typography>
+      <Divider />
     </Box>
   );
 }
