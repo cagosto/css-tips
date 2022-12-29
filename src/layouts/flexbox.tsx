@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import { faker } from '@faker-js/faker';
 import { times } from 'lodash';
+import { common } from '@mui/material/colors';
 
 export default function FlexBoxLayouts() {
   const boxes = times(10);
@@ -25,7 +26,18 @@ export default function FlexBoxLayouts() {
         sx={{ my: 2 }}
       >
         {boxes.map((v) => (
-          <Box key={v}>{faker.name.fullName()}</Box>
+          <Box
+            key={v}
+            sx={{
+              background: (theme) => theme.palette.primary.light,
+              borderRadius: 2,
+              p: 1,
+            }}
+          >
+            <Typography sx={{ color: common.white }}>
+              {faker.name.fullName()}
+            </Typography>
+          </Box>
         ))}
       </Stack>
       <Stack direction={!mdBP ? 'column' : 'row'} columnGap={2}>
