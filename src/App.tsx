@@ -25,12 +25,15 @@ function App() {
           <Button variant="text" component={Link} to="/flex">
             Flex
           </Button>
+
           <Button variant="text" component={Link} to="/grid">
             Grid
           </Button>
+
           <Button variant="text" component={Link} to="/reflow">
             Reflow
           </Button>
+
           <Button variant="text" component={Link} to="/style-overrides">
             Style Overrides
           </Button>
